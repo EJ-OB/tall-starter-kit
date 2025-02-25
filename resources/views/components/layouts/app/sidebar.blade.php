@@ -17,6 +17,23 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            <flux:navlist variant="outline">
+                <flux:navlist.group heading="User Management" class="grid" expandable>
+                    <flux:navlist.item icon="user-group" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>Users</flux:navlist.item>
+                    <flux:navlist.item icon="cube" href="#" wire:navigate>Roles</flux:navlist.item>
+                    <flux:navlist.item icon="lock-closed" href="#" wire:navigate>Permissions</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
+            <flux:navlist variant="outline">
+                <flux:navlist.group heading="System Management" class="grid" expandable>
+                    <flux:navlist.item icon="lock-open" href="#" wire:navigate>Authentication Logs</flux:navlist.item>
+                    <flux:navlist.item icon="bolt" href="#" wire:navigate>Performance Monitor</flux:navlist.item>
+                    <flux:navlist.item icon="queue-list" href="#" wire:navigate>Queued Jobs</flux:navlist.item>
+                    <flux:navlist.item icon="command-line" href="#" wire:navigate>System Logs</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
             <flux:spacer />
 
             <flux:navlist variant="outline">
