@@ -10,6 +10,8 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::view('users', 'pages.users.index')->name('users.index');
+    Route::view('roles', 'pages.roles.index')->name('roles.index');
+    Route::view('permissions', 'pages.permissions.index')->name('permissions.index');
 });
 
 Route::middleware(['auth'])->group(function () {

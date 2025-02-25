@@ -1,13 +1,13 @@
 <x-layouts.app.sidebar>
-    @isset($breadcrumbs)
-        <flux:header>
-            <flux:breadcrumbs>
-                {{ $breadcrumbs }}
-            </flux:breadcrumbs>
+    <flux:header>
+        <flux:breadcrumbs>
+            <flux:breadcrumbs.item icon="home" href="{{ route('dashboard') }}" />
 
-            <div class="h-6"></div>
-        </flux:header>
-    @endisset
+            @isset($breadcrumbs)
+                {{ $breadcrumbs }}
+            @endisset
+        </flux:breadcrumbs>
+    </flux:header>
 
     <flux:main>
         {{ $slot }}

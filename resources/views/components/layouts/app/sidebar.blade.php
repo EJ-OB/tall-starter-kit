@@ -12,19 +12,19 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group heading="Platform" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>Dashboard</flux:navlist.item>
-                </flux:navlist.group>
+                <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>Dashboard</flux:navlist.item>
             </flux:navlist>
 
+            {{-- User Management --}}
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="User Management" class="grid" expandable>
                     <flux:navlist.item icon="user-group" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>Users</flux:navlist.item>
-                    <flux:navlist.item icon="cube" href="#" wire:navigate>Roles</flux:navlist.item>
-                    <flux:navlist.item icon="lock-closed" href="#" wire:navigate>Permissions</flux:navlist.item>
+                    <flux:navlist.item icon="cube" :href="route('roles.index')" wire:navigate>Roles</flux:navlist.item>
+                    <flux:navlist.item icon="lock-closed" :href="route('permissions.index')" wire:navigate>Permissions</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
+            {{-- System Management --}}
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="System Management" class="grid" expandable>
                     <flux:navlist.item icon="lock-open" href="#" wire:navigate>Authentication Logs</flux:navlist.item>
