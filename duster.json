@@ -1,0 +1,22 @@
+{
+    "include" : [
+        "app",
+        "config",
+        "database",
+        "modules",
+        "resources",
+        "routes"
+    ],
+    "scripts": {
+        "fix": {
+            "rector": ["./vendor/bin/rector"],
+            "pint": ["./vendor/bin/pint"]
+        },
+        "lint": {
+            "tlint": ["./vendor/bin/tlint", "format"],
+            "phpstan": ["./vendor/bin/phpstan", "analyse", "--memory-limit=4096M"],
+            "pest": ["./vendor/bin/pest"]
+        }
+    },
+    "processTimeout": 3600
+}

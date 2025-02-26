@@ -29,7 +29,9 @@
         "nunomaduro/collision": "^8.6",
         "pestphp/pest": "^3.7",
         "pestphp/pest-plugin-drift": "^3.0",
-        "pestphp/pest-plugin-laravel": "^3.1"
+        "pestphp/pest-plugin-laravel": "^3.1",
+        "tightenco/duster": "^3.1",
+        "tightenco/tlint": "^9.4"
     },
     "autoload": {
         "psr-4": {
@@ -64,11 +66,27 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
-        "qa": [
-            "./vendor/bin/pint",
-            "./vendor/bin/phpstan",
-            "./vendor/bin/pest --parallel",
+        "duster": [
+            "./vendor/bin/duster fix"
+        ],
+        "lint": [
+            "./vendor/bin/pint"
+        ],
+        "stan": [
+            "./vendor/bin/phpstan analyse --memory-limit=4096M"
+        ],
+        "rector": [
             "./vendor/bin/rector"
+        ],
+        "test": [
+            "@php artisan test"
+        ],
+        "qa": [
+            "./vendor/bin/duster fix --using=rector,pint,tlint",
+            "./vendor/bin/duster lint --using=phpstan,pest"
+        ],
+        "cup": [
+            "composer update && composer bump"
         ]
     },
     "extra": {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -11,7 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::get('users', function () {
         return view('pages.users.index', [
-            'data' => App\Models\User::all(['id', 'name', 'email', 'created_at', 'updated_at']),
+            'data' => User::all(['id', 'name', 'email', 'created_at', 'updated_at']),
             'columns' => [
                 ['data' => 'id', 'title' => 'ID'],
                 ['data' => 'name', 'title' => 'Name'],
@@ -34,4 +35,4 @@ Route::middleware(['auth'])->group(function (): void {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
