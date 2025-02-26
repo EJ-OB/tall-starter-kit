@@ -9,7 +9,19 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
-    Route::view('users', 'pages.users.index')->name('users.index');
+    Route::get('users', function () {
+        return view('pages.users.index', [
+            'data' => App\Models\User::all(['id', 'name', 'email', 'created_at', 'updated_at']),
+            'columns' => [
+                ['data' => 'id', 'title' => 'ID'],
+                ['data' => 'name', 'title' => 'Name'],
+                ['data' => 'email', 'title' => 'Email'],
+                ['data' => 'created_at', 'title' => 'Created At'],
+                ['data' => 'updated_at', 'title' => 'Updated At'],
+            ],
+            'select' => true,
+        ]);
+    })->name('users.index');
     Route::view('roles', 'pages.roles.index')->name('roles.index');
     Route::view('permissions', 'pages.permissions.index')->name('permissions.index');
 });
