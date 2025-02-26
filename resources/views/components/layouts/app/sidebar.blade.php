@@ -28,7 +28,7 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="System Management" class="grid" expandable>
                     <flux:navlist.item icon="lock-open" href="#" wire:navigate>Authentication Logs</flux:navlist.item>
-                    <flux:navlist.item icon="bolt" href="#" wire:navigate>Performance Monitor</flux:navlist.item>
+                    <flux:navlist.item icon="bolt" :href="route('pulse')" target="_blank">Performance Monitor</flux:navlist.item>
                     <flux:navlist.item icon="queue-list" :href="route('horizon.index')" target="_blank">Queued Jobs</flux:navlist.item>
                     <flux:navlist.item icon="command-line" :href="route('log-viewer.index')" target="_blank">System Logs</flux:navlist.item>
                 </flux:navlist.group>
