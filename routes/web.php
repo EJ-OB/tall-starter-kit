@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::get('users', function () {
         return view('pages.users.index', [
@@ -26,7 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('permissions', 'pages.permissions.index')->name('permissions.index');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function (): void {
     Route::redirect('settings', 'settings/profile');
 
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
