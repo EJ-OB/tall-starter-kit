@@ -1,5 +1,5 @@
 <x-layouts.app.sidebar>
-    <flux:header>
+    <flux:header class="hidden lg:flex">
         <flux:breadcrumbs>
             <flux:breadcrumbs.item icon="home" href="{{ route('dashboard') }}" />
 

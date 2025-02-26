@@ -1,5 +1,6 @@
 <x-layouts.app>
     <x-slot:breadcrumbs>
+        <flux:breadcrumbs.item>User Management</flux:breadcrumbs.item>
         <flux:breadcrumbs.item>Users</flux:breadcrumbs.item>
     </x-slot:breadcrumbs>
 
