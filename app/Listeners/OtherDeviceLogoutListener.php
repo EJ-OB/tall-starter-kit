@@ -24,10 +24,10 @@ readonly class OtherDeviceLogoutListener implements ShouldQueue
             ->first();
 
         if (! $authLogs) {
-            $authLogs = $event->user->authLogs()->make([
+            $authLogs = $event->user->authLogs()->create([
                 'ip_address' => $this->request->ip(),
                 'user_agent' => $this->request->userAgent(),
-            ])->touch('created_at');
+            ]);
         }
 
         $event->user->authLogs()

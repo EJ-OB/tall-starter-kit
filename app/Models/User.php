@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
+    /** @use HasAuthLogs<$this> */
     use HasAuthLogs;
 
     /** @use HasFactory<UserFactory> */
