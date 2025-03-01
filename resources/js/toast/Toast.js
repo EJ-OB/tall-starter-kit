@@ -31,20 +31,8 @@ export class Toast {
         return this
     }
 
-    color(color) {
-        this.color = color
-
-        return this
-    }
-
     icon(icon) {
         this.icon = icon
-
-        return this
-    }
-
-    iconColor(color) {
-        this.iconColor = color
 
         return this
     }
