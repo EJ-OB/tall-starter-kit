@@ -12,13 +12,15 @@ class Toast implements Htmlable, Arrayable, Wireable
 {
     protected string $view = 'toast.index';
 
+    protected const int DEFAULT_DURATION = 2500;
+
     public function __construct(
         protected string $id,
         protected string $title,
         protected ?string $message = null,
         protected ?string $icon = null,
         protected ToastVariant $variant = ToastVariant::Info,
-        protected int|string|null $duration = null,
+        protected int|string|null $duration = self::DEFAULT_DURATION,
     ) {}
 
     public static function make(array $toast): static
@@ -35,7 +37,7 @@ class Toast implements Htmlable, Arrayable, Wireable
             'message' => $toast['message'] ?? null,
             'icon' => $toast['icon'] ?? null,
             'variant' => $variant ?? ToastVariant::Info,
-            'duration' => $toast['duration'] ?? null,
+            'duration' => $toast['duration'] ?? self::DEFAULT_DURATION,
         ]);
     }
 
