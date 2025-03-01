@@ -1,28 +1,22 @@
 @use(App\Enums\ToastVariant)
 
 <div
-    x-data="{ toast: @js($toast) }"
-    x-init="
-        setTimeout(
-            () =>
-                window.dispatchEvent(
-                    new CustomEvent('toast:closed', {
-                        detail: {
-                            id: toast.id
-                        }
-                    }),
-                ),
-            1000,
-        )
-    "
+    wire:key="{{ "{$this->getId()}.notifications.{$toast->getId()}" }}"
+    x-data="toastComponent({
+        toast: @js($toast)
+    })"
+    x-transition:enter-start="opacity-0 translate-x-full"
+    x-transition:leave-end="opacity-0 scale-95"
+
     @class(Arr::toCssClasses([
+        'transition ease-in-out duration-300',
         'text-sm p-3 w-full border rounded-lg',
         'text-zinc-700 dark:text-zinc-300 border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900',
         'shadow dark:shadow-none',
         'flex items-center' => ! $message,
     ]))
 >
-    <div class="inline-flex items-center gap-x-1 whitespace-nowrap">
+    <div class="w-full flex items-center gap-x-1 whitespace-nowrap">
         <flux:icon
             :icon="$icon ?? match($variant) {
                 ToastVariant::Danger => 'x-circle',
@@ -38,6 +32,8 @@
             }"
         />
         <h3 class="font-semibold">{{ $title }}</h3>
+        <flux:spacer />
+        <flux:button x-on:click="close" icon="x-mark" variant="subtle" size="xs" />
     </div>
 
     @if($message)

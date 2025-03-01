@@ -18,6 +18,7 @@ class Toast implements Htmlable, Arrayable, Wireable
         protected ?string $message = null,
         protected ?string $icon = null,
         protected ToastVariant $variant = ToastVariant::Info,
+        protected int|string|null $duration = null,
     ) {}
 
     public static function make(array $toast): static
@@ -34,6 +35,7 @@ class Toast implements Htmlable, Arrayable, Wireable
             'message' => $toast['message'] ?? null,
             'icon' => $toast['icon'] ?? null,
             'variant' => $variant ?? ToastVariant::Info,
+            'duration' => $toast['duration'] ?? null,
         ]);
     }
 
@@ -45,6 +47,7 @@ class Toast implements Htmlable, Arrayable, Wireable
             'message' => $this->getMessage(),
             'icon' => $this->getIcon(),
             'variant' => $this->getVariant(),
+            'duration' => $this->getDuration(),
         ];
     }
 
@@ -54,12 +57,8 @@ class Toast implements Htmlable, Arrayable, Wireable
     public function toHtml(): string
     {
         return view($this->view, [
-            'id' => $this->getId(),
-            'title' => $this->getTitle(),
-            'message' => $this->getMessage(),
-            'icon' => $this->getIcon(),
-            'variant' => $this->getVariant(),
-            'toast' => $this->toArray(),
+            ...$this->toArray(),
+            'toast' => $this,
         ])->render();
     }
 
@@ -96,5 +95,10 @@ class Toast implements Htmlable, Arrayable, Wireable
     public function getVariant(): ToastVariant
     {
         return $this->variant;
+    }
+
+    public function getDuration(): int|string|null
+    {
+        return $this->duration;
     }
 }

@@ -11,6 +11,8 @@ use Livewire\Component;
 
 class Toasts extends Component
 {
+    public bool $isToastComponent = true;
+
     public Collection $toasts;
 
     public function mount(): void
