@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
 use Livewire\Livewire;
+
 use function Livewire\on;
 use function Livewire\store;
 
@@ -15,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        on('dehydrate', function (Component $component) {
+        on('dehydrate', function (Component $component): void {
             if (! Livewire::isLivewireRequest()) {
                 return;
             }

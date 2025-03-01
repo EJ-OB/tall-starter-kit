@@ -8,7 +8,7 @@ use Illuminate\Contracts\Support\Htmlable;
 use Livewire\Wireable;
 use Throwable;
 
-class Toast implements Htmlable, Arrayable, Wireable
+class Toast implements Arrayable, Htmlable, Wireable
 {
     protected string $view = 'toast.index';
 
@@ -27,7 +27,7 @@ class Toast implements Htmlable, Arrayable, Wireable
     {
         $variant = $toast['variant'] ?? null;
 
-        if  (is_string($variant)) {
+        if (is_string($variant)) {
             $variant = ToastVariant::tryFrom($variant);
         }
 

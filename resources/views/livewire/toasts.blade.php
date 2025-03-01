@@ -7,7 +7,7 @@
     {{ \App\Toast\Toast::make(['id' => '123', 'title' => 'Info', 'message' => 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum', 'variant' => ToastVariant::Info]) }}
     {{ \App\Toast\Toast::make(['id' => '123', 'title' => 'Success', 'message' => 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum', 'variant' => ToastVariant::Success]) }}
     {{ \App\Toast\Toast::make(['id' => '123', 'title' => 'Warning', 'message' => 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum', 'variant' => ToastVariant::Warning]) }}
-    @foreach($toasts as $toast)
+    @foreach ($toasts as $toast)
         {{ $toast }}
     @endforeach
 </div>

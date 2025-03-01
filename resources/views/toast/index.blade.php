@@ -36,7 +36,7 @@
         <flux:button x-on:click="close" icon="x-mark" variant="subtle" size="xs" />
     </div>
 
-    @if($message)
+    @if ($message)
         <p>{{ $message }}</p>
     @endif
 </div>
