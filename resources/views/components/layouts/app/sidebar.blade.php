@@ -147,5 +147,6 @@
         {{ $slot }}
 
         @fluxScripts
+        <livewire:toasts />
     </body>
 </html>
