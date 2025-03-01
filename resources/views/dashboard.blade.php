@@ -6,28 +6,28 @@
                 new Toast()
                     .title('Danger')
                     .message('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
-                    .variant('danger')
+                    .danger()
                     .seconds(3)
                     .send();
 
                 new Toast()
                     .title('Info')
                     .message('It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.')
-                    .variant('info')
+                    .info()
                     .seconds(3)
                     .send();
 
                 new Toast()
                     .title('Success')
                     .message('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
-                    .variant('success')
+                    .success()
                     .seconds(3)
                     .send();
 
                 new Toast()
                     .title('Warning')
                     .message('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
-                    .variant('warning')
+                    .warning()
                     .seconds(3)
                     .send();
 
@@ -35,7 +35,7 @@
                     .title('Custom Icon')
                     .message('Custom icon example')
                     .icon('video-camera')
-                    .variant('info')
+                    .info()
                     .seconds(3)
                     .send();
             "
