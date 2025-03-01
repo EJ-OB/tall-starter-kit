@@ -11,7 +11,7 @@
     @class(Arr::toCssClasses([
         'space-y-1',
         'transition ease-in-out duration-300',
-        'text-sm p-3 w-full border rounded-lg',
+        'text-sm p-4 w-full border rounded-xl',
         'text-zinc-700 dark:text-zinc-300 border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900',
         'shadow dark:shadow-none',
         'flex items-center' => ! $message,
