@@ -38,6 +38,6 @@
     </div>
 
     @if ($message)
-        <p>{{ $message }}</p>
+        <p>{{ Str::words($message, 30) }}</p>
     @endif
 </div>
