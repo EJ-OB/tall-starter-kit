@@ -9,6 +9,7 @@
     x-transition:leave-end="opacity-0 scale-95"
 
     @class(Arr::toCssClasses([
+        'space-y-1',
         'transition ease-in-out duration-300',
         'text-sm p-3 w-full border rounded-lg',
         'text-zinc-700 dark:text-zinc-300 border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900',
