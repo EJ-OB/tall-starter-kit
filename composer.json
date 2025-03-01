@@ -16,7 +16,9 @@
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.0",
         "livewire/volt": "^1.6.7",
-        "opcodesio/log-viewer": "^3.15"
+        "opcodesio/log-viewer": "^3.15",
+        "yajra/laravel-datatables": "^12.0",
+        "yajra/laravel-oci8": "^12.0"
     },
     "require-dev": {
         "driftingly/rector-laravel": "^2.0",
