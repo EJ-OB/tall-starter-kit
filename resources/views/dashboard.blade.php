@@ -38,6 +38,14 @@
                     .info()
                     .seconds(3)
                     .send();
+
+                new Toast()
+                    .title('Persistent')
+                    .message('It will not go away unless you close it...')
+                    .icon('exclamation-triangle')
+                    .warning()
+                    .persistent()
+                    .send();
             "
             class="bg-blue-500 text-white font-bold py-2 px-4 rounded"
         >
