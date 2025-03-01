@@ -19,6 +19,7 @@
 >
     <div class="w-full flex items-center gap-x-1 whitespace-nowrap">
         <flux:icon
+            variant="micro"
             :icon="$icon ?? match($variant) {
                 ToastVariant::Danger => 'x-circle',
                 ToastVariant::Info => 'information-circle',
