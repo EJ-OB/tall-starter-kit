@@ -16,10 +16,10 @@ class Toast implements Arrayable, Htmlable, Wireable
 
     public function __construct(
         protected string $id,
-        protected string $title,
+        protected ?string $title = null,
         protected ?string $message = null,
         protected ?string $icon = null,
-        protected ToastVariant $variant = ToastVariant::Info,
+        protected ?ToastVariant $variant = null,
         protected int|string|null $duration = self::DEFAULT_DURATION,
     ) {}
 
@@ -33,10 +33,10 @@ class Toast implements Arrayable, Htmlable, Wireable
 
         return app(static::class, [
             'id' => $toast['id'],
-            'title' => $toast['title'],
+            'title' => $toast['title'] ?? null,
             'message' => $toast['message'] ?? null,
             'icon' => $toast['icon'] ?? null,
-            'variant' => $variant ?? ToastVariant::Info,
+            'variant' => $variant,
             'duration' => $toast['duration'] ?? self::DEFAULT_DURATION,
         ]);
     }
@@ -79,7 +79,7 @@ class Toast implements Arrayable, Htmlable, Wireable
         return $this->id;
     }
 
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -94,7 +94,7 @@ class Toast implements Arrayable, Htmlable, Wireable
         return $this->icon;
     }
 
-    public function getVariant(): ToastVariant
+    public function getVariant(): ?ToastVariant
     {
         return $this->variant;
     }

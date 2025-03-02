@@ -14,31 +14,40 @@
         'text-sm p-4 w-full border rounded-xl',
         'text-zinc-700 dark:text-zinc-300 border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900',
         'shadow dark:shadow-none',
-        'flex items-center' => ! $message,
+        'flex flex-col items-center' => ! $message,
     ]))
 >
-    <div class="w-full flex items-center gap-x-1 whitespace-nowrap">
-        <flux:icon
-            variant="micro"
-            :icon="$icon ?? match($variant) {
-                ToastVariant::Danger => 'x-circle',
-                ToastVariant::Info => 'information-circle',
-                ToastVariant::Success => 'check-circle',
-                ToastVariant::Warning => 'exclamation-circle',
-            }"
-            :class="match($variant) {
-                ToastVariant::Danger => 'text-danger-500',
-                ToastVariant::Info => 'text-info-500',
-                ToastVariant::Success => 'text-success-500',
-                ToastVariant::Warning => 'text-warning-500',
-            }"
-        />
-        <h3 class="font-semibold">{{ $title }}</h3>
+    <div class="w-full flex flex-row items-center gap-x-1 whitespace-nowrap">
+        @if($icon || $variant)
+            <flux:icon
+                variant="micro"
+                :icon="$icon ?? match($variant) {
+                    ToastVariant::Danger => 'x-circle',
+                    ToastVariant::Info => 'information-circle',
+                    ToastVariant::Success => 'check-circle',
+                    ToastVariant::Warning => 'exclamation-circle',
+                }"
+                :class="match($variant) {
+                    ToastVariant::Danger => 'text-danger-500',
+                    ToastVariant::Info => 'text-info-500',
+                    ToastVariant::Success => 'text-success-500',
+                    ToastVariant::Warning => 'text-warning-500',
+                    null => '',
+                }"
+            />
+        @endif
+
+        @if ($title)
+            <h3 class="font-semibold">{{ $title }}</h3>
+        @elseif ($message)
+            <p>{{ Str::words($message, 30) }}</p>
+        @endif
+
         <flux:spacer />
         <flux:button x-on:click="close" icon="x-mark" variant="subtle" size="xs" />
     </div>
 
-    @if ($message)
+    @if ($title && $message)
         <p>{{ Str::words($message, 30) }}</p>
     @endif
 </div>

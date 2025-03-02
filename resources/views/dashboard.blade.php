@@ -1,56 +1,47 @@
 <x-layouts.app>
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-        <button
-            x-data
-            @click="
-                new Toast()
-                    .title('Danger')
-                    .message('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
-                    .danger()
-                    .seconds(3)
-                    .send();
+        <div class="grid grid-cols-1 gap-1 max-w-72">
+            <flux:button x-data="{}" x-on:click="new Toast().message('Message only toast...').send()">
+                Message Only
+            </flux:button>
 
-                new Toast()
-                    .title('Info')
-                    .message('It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.')
-                    .info()
-                    .seconds(3)
-                    .send();
+            <flux:button x-data="{}" x-on:click="new Toast().title('Title only toast...').send()">
+                Title Only
+            </flux:button>
 
-                new Toast()
-                    .title('Success')
-                    .message('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
-                    .success()
-                    .seconds(3)
-                    .send();
+            <flux:button x-data="{}" x-on:click="new Toast().title('Toast').message('Title and message toast').send()">
+                Title and Message
+            </flux:button>
 
-                new Toast()
-                    .title('Warning')
-                    .message('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
-                    .warning()
-                    .seconds(3)
-                    .send();
+            <flux:button x-data="{}" x-on:click="new Toast().icon('megaphone').message('Message only toast...').send()">
+                Message Only (With Icon)
+            </flux:button>
 
-                new Toast()
-                    .title('Custom Icon')
-                    .message('Custom icon example')
-                    .icon('video-camera')
-                    .info()
-                    .seconds(3)
-                    .send();
+            <flux:button x-data="{}" x-on:click="new Toast().icon('megaphone').title('Title only toast...').send()">
+                Title Only (With Icon)
+            </flux:button>
 
-                new Toast()
-                    .title('Persistent')
-                    .message('It will not go away unless you close it...')
-                    .icon('exclamation-triangle')
-                    .warning()
-                    .persistent()
-                    .send();
-            "
-            class="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-        >
-            Notify
-        </button>
+            <flux:button x-data="{}" x-on:click="new Toast().icon('megaphone').title('Toast').message('Title and message toast').send()">
+                Title and Message (With Icon)
+            </flux:button>
+
+            <flux:button x-data="{}" x-on:click="new Toast().info().title('Toast').message('Info toast').send()">
+                Info
+            </flux:button>
+
+            <flux:button x-data="{}" x-on:click="new Toast().success().title('Toast').message('Success toast').send()">
+                Success
+            </flux:button>
+
+            <flux:button x-data="{}" x-on:click="new Toast().warning().title('Toast').message('Warning toast').send()">
+                Warning
+            </flux:button>
+
+            <flux:button x-data="{}" x-on:click="new Toast().danger().title('Toast').message('Danger toast').send()">
+                Danger
+            </flux:button>
+        </div>
+
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
                 <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
