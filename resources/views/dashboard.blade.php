@@ -40,6 +40,22 @@
             <flux:button x-data="{}" x-on:click="new Toast().danger().title('Toast').message('Danger toast').send()">
                 Danger
             </flux:button>
+
+            <flux:button x-data="{}" x-on:click="$toast('Your changes have been saved.')">
+                Using $toast() alpine magic
+            </flux:button>
+
+            <flux:button
+                x-data="{}"
+                x-on:click="$toast({
+                    title: 'Persistent Toast',
+                    message: 'This toast does not automatically close!',
+                    variant: 'warning',
+                    duration: 'persistent',
+                })"
+            >
+                Persistent
+            </flux:button>
         </div>
 
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
