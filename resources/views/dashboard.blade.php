@@ -56,6 +56,13 @@
             >
                 Persistent
             </flux:button>
+
+            <flux:button
+                x-data="{}"
+                x-on:click="$toast().seconds(1).message('1 second duration toast!').send()"
+            >
+                1 second duration
+            </flux:button>
         </div>
 
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">

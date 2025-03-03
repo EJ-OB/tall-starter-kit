@@ -22,6 +22,8 @@ export default (Alpine) => {
                     .duration(duration || null)
                     .send()
             }
+
+            return toast;
         }
     });
 }
