@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Toast\Toast;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -30,7 +29,7 @@ class Toasts extends Component
     public function pullToastsFromSession(): void
     {
         foreach (session()->pull('laravel.toasts') ?? [] as $toast) {
-            $toast = Toast::make($toast);
+            $toast = Toast::fromArray($toast);
 
             $this->toasts->put($toast->getId(), $toast);
         }
@@ -39,7 +38,7 @@ class Toasts extends Component
     #[On('toast:js-sent')]
     public function pushToastFromJs(array $toast): void
     {
-        $toast = Toast::make($toast);
+        $toast = Toast::fromArray($toast);
 
         $this->toasts->put($toast->getId(), $toast);
     }
@@ -52,13 +51,5 @@ class Toasts extends Component
         }
 
         $this->toasts->forget($id);
-    }
-
-    public function notify(): void
-    {
-        session()->push('laravel.toasts', [
-            'id' => Str::orderedUuid(),
-            'title' => 'Hello, World!',
-        ]);
     }
 }

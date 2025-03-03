@@ -5,6 +5,7 @@ namespace App\Toast;
 use App\Enums\ToastVariant;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Str;
 use Livewire\Wireable;
 use Throwable;
 
@@ -23,22 +24,27 @@ class Toast implements Arrayable, Htmlable, Wireable
         protected int|string|null $duration = self::DEFAULT_DURATION,
     ) {}
 
-    public static function make(array $toast): static
+    public static function make(?string $id = null): static
     {
+        return app(static::class, ['id' => $id ?? Str::orderedUuid()]);
+    }
+
+    public static function fromArray(array $toast): static
+    {
+        $static = static::make($toast['id'] ?? Str::orderedUuid());
+
         $variant = $toast['variant'] ?? null;
 
         if (is_string($variant)) {
             $variant = ToastVariant::tryFrom($variant);
         }
 
-        return app(static::class, [
-            'id' => $toast['id'],
-            'title' => $toast['title'] ?? null,
-            'message' => $toast['message'] ?? null,
-            'icon' => $toast['icon'] ?? null,
-            'variant' => $variant,
-            'duration' => $toast['duration'] ?? self::DEFAULT_DURATION,
-        ]);
+        return $static
+            ->title($toast['title'] ?? null)
+            ->message($toast['message'] ?? null)
+            ->icon($toast['icon'] ?? null)
+            ->duration($toast['duration'] ?? self::DEFAULT_DURATION)
+            ->variant($variant);
     }
 
     public function toArray(): array
@@ -71,7 +77,14 @@ class Toast implements Arrayable, Htmlable, Wireable
 
     public static function fromLivewire($value): static
     {
-        return static::make($value);
+        return static::fromArray($value);
+    }
+
+    public function send(): static
+    {
+        session()->push('laravel.toast', $this);
+
+        return $this;
     }
 
     public function getId(): string
@@ -79,9 +92,23 @@ class Toast implements Arrayable, Htmlable, Wireable
         return $this->id;
     }
 
+    public function title(?string $title): static
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
     public function getTitle(): ?string
     {
         return $this->title;
+    }
+
+    public function message(?string $message): static
+    {
+        $this->message = $message;
+
+        return $this;
     }
 
     public function getMessage(): ?string
@@ -89,14 +116,35 @@ class Toast implements Arrayable, Htmlable, Wireable
         return $this->message;
     }
 
+    public function icon(?string $icon): static
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
     public function getIcon(): ?string
     {
         return $this->icon;
     }
 
+    public function variant(?ToastVariant $variant): static
+    {
+        $this->variant = $variant;
+
+        return $this;
+    }
+
     public function getVariant(): ?ToastVariant
     {
         return $this->variant;
+    }
+
+    public function duration(int|string|null $duration): static
+    {
+        $this->duration = $duration;
+
+        return $this;
     }
 
     public function getDuration(): int|string|null
