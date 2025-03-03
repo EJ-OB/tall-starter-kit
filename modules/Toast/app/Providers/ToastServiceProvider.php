@@ -4,9 +4,13 @@ namespace Modules\Toast\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Component;
 use Livewire\Livewire;
 use Modules\Toast\Livewire\Toasts;
 use Nwidart\Modules\Traits\PathNamespace;
+
+use function Livewire\on;
+use function Livewire\store;
 
 class ToastServiceProvider extends ServiceProvider
 {
@@ -16,11 +20,30 @@ class ToastServiceProvider extends ServiceProvider
 
     protected string $nameLower = 'toast';
 
+    public function register(): void
+    {
+        Livewire::component('toasts', Toasts::class);
+
+        on('dehydrate', function (Component $component): void {
+            if (! Livewire::isLivewireRequest()) {
+                return;
+            }
+
+            if (store($component)->has('redirect')) {
+                return;
+            }
+
+            if (count(session()->get('laravel.toasts') ?? []) <= 0) {
+                return;
+            }
+
+            $component->dispatch('toast:sent');
+        });
+    }
+
     public function boot(): void
     {
         $this->registerViews();
-
-        Livewire::component('toasts', Toasts::class);
     }
 
     public function registerViews(): void
