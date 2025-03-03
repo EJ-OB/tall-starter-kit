@@ -63,6 +63,8 @@
             >
                 1 second duration
             </flux:button>
+
+            <livewire:ToastTrigger />
         </div>
 
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">

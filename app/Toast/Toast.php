@@ -82,7 +82,7 @@ class Toast implements Arrayable, Htmlable, Wireable
 
     public function send(): static
     {
-        session()->push('laravel.toast', $this);
+        session()->push('laravel.toasts', $this->toArray());
 
         return $this;
     }
