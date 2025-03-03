@@ -1,0 +1,7 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::group([], function () {
+    Route::view('$LOWER_NAME$', '$LOWER_NAME$::index')->name('$LOWER_NAME$.index');
+});

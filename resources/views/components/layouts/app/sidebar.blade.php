@@ -147,5 +147,9 @@
         {{ $slot }}
 
         @fluxScripts
+
+        @persist('laravel.toast')
+            <livewire:toasts />
+        @endpersist
     </body>
 </html>
