@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace Modules\Toast\Livewire;
 
-use App\Toast\Toast;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Modules\Toast\Toast;
 
 class Toasts extends Component
 {
@@ -22,7 +22,7 @@ class Toasts extends Component
 
     public function render(): Renderable
     {
-        return view('livewire.toasts');
+        return view('toast::livewire.toasts');
     }
 
     #[On('toast:sent')]

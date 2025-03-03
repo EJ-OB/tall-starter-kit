@@ -1,14 +1,12 @@
 <?php
 
-use App\Toast\Toast;
+use Modules\Toast\Toast;
 
-$toast = function () {
-    Toast::make()
-        ->icon('check')
-        ->variant(\App\Enums\ToastVariant::Success)
-        ->title('Operation successful')
-        ->send();
-}
+$toast = fn () => Toast::make()
+    ->icon('check')
+    ->variant(\Modules\Toast\Enums\ToastVariant::Success)
+    ->title('Operation successful')
+    ->send();
 ?>
 
 <div>

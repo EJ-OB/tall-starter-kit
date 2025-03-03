@@ -1,0 +1,11 @@
+{
+    "name": "Toast",
+    "alias": "toast",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Toast\\Providers\\ToastServiceProvider"
+    ],
+    "files": []
+}

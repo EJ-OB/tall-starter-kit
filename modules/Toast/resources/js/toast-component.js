@@ -1,4 +1,4 @@
-import { Toast } from "../Toast.js";
+import { Toast } from "./Toast.js";
 
 window.Toast = Toast;
 

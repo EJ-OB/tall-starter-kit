@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Toast;
+namespace Modules\Toast;
 
-use App\Enums\ToastVariant;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Str;
 use Livewire\Wireable;
+use Modules\Toast\Enums\ToastVariant;
 use Throwable;
 
 class Toast implements Arrayable, Htmlable, Wireable

@@ -1,4 +1,4 @@
-@use(App\Enums\ToastVariant)
+@use(Modules\Toast\Enums\ToastVariant)
 
 <div
     wire:key="{{ "{$this->getId()}.notifications.{$toast->getId()}" }}"
@@ -43,8 +43,8 @@
             <p>{{ Str::words($message, 30) }}</p>
         @endif
 
-        <flux:spacer />
-        <flux:button x-on:click="close" icon="x-mark" variant="subtle" size="xs" />
+        <flux:spacer/>
+        <flux:button x-on:click="close" icon="x-mark" variant="subtle" size="xs"/>
     </div>
 
     @if ($title && $message)
