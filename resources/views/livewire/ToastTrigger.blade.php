@@ -9,7 +9,7 @@ $toast = function () {
         ->title('Operation successful')
         ->send();
 
-    $this->redirectRoute('users.index');
+    // $this->redirectRoute('users.index');
 };
 ?>
 

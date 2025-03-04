@@ -1,29 +1,9 @@
 <x-layouts.app>
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
         <div class="grid grid-cols-1 gap-1 max-w-72">
-            <flux:button x-data="{}" x-on:click="new Toast().message('Message only toast...').send()">
-                Message Only
-            </flux:button>
+            <x-date-picker placeholder="Select a date" direction="left" show-selections multiple clearable />
 
-            <flux:button x-data="{}" x-on:click="new Toast().title('Title only toast...').send()">
-                Title Only
-            </flux:button>
-
-            <flux:button x-data="{}" x-on:click="new Toast().title('Toast').message('Title and message toast').send()">
-                Title and Message
-            </flux:button>
-
-            <flux:button x-data="{}" x-on:click="new Toast().icon('megaphone').message('Message only toast...').send()">
-                Message Only (With Icon)
-            </flux:button>
-
-            <flux:button x-data="{}" x-on:click="new Toast().icon('megaphone').title('Title only toast...').send()">
-                Title Only (With Icon)
-            </flux:button>
-
-            <flux:button x-data="{}" x-on:click="new Toast().icon('megaphone').title('Toast').message('Title and message toast').send()">
-                Title and Message (With Icon)
-            </flux:button>
+            <livewire:LivewireDatePicker />
 
             <flux:button x-data="{}" x-on:click="new Toast().info().title('Toast').message('Info toast').send()">
                 Info
@@ -43,25 +23,6 @@
 
             <flux:button x-data="{}" x-on:click="$toast('Your changes have been saved.')">
                 Using $toast() alpine magic
-            </flux:button>
-
-            <flux:button
-                x-data="{}"
-                x-on:click="$toast({
-                    title: 'Persistent Toast',
-                    message: 'This toast does not automatically close!',
-                    variant: 'warning',
-                    duration: 'persistent',
-                })"
-            >
-                Persistent
-            </flux:button>
-
-            <flux:button
-                x-data="{}"
-                x-on:click="$toast().seconds(1).message('1 second duration toast!').send()"
-            >
-                1 second duration
             </flux:button>
 
             <livewire:ToastTrigger />

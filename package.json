@@ -16,6 +16,7 @@
         "datatables.net-dt": "^2.2.2",
         "datatables.net-editor-dt": "^2.2.0",
         "datatables.net-select-dt": "^3.0.0",
+        "daterangepicker": "^3.1.0",
         "jquery": "^3.7.1",
         "laravel-vite-plugin": "^1.0",
         "lodash": "^4.17.21",
