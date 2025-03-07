@@ -1,0 +1,17 @@
+.dt-button {
+    @apply px-3 py-1 text-sm font-medium border border-zinc-300 dark:border-zinc-500 rounded-md shadow-sm dark:shadow-none
+    bg-white dark:bg-zinc-700 text-zinc-800 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-600/75
+    active:bg-zinc-200 dark:active:bg-zinc-500/75 focus:outline-none focus:ring
+    focus:ring-zinc-200/50 dark:focus:ring-zinc-700/50
+    disabled:opacity-50 disabled:cursor-default disabled:bg-zinc-200 dark:disabled:bg-zinc-500;
+}
+
+.dt-button.buttons-create {
+    @apply text-white border-primary-500 bg-primary-500 dark:bg-primary-400 hover:bg-primary-500/75 dark:hover:bg-primary-400/75
+     active:bg-primary-600/75 dark:active:bg-primary-500/75 disabled:hover:bg-primary-500 dark:disabled:hover:bg-primary-400;
+}
+
+.dt-button.buttons-remove {
+    @apply text-white border-danger-500 bg-danger-500 dark:bg-danger-400 hover:bg-danger-500/75 dark:hover:bg-danger-400/75
+     active:bg-danger-600/75 dark:active:bg-danger-500/75 disabled:hover:bg-danger-500 dark:disabled:hover:bg-danger-400;
+}

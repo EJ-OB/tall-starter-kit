@@ -1,9 +1,10 @@
 import DataTable from 'datatables.net-dt';
-import Select from 'datatables.net-select-dt';
-import Editor from 'datatables.net-editor-dt';
+import 'datatables.net-buttons-dt';
+import 'datatables.net-select-dt';
+import 'datatables.net-editor-dt';
+import 'datatables.net-datetime';
 
-DataTable.use(Select);
-DataTable.use(Editor);
+window.DataTable = DataTable;
 
 export default (Alpine) => {
     Alpine.data('datatables', ({ options = {}, errMode = 'alert' } = {}) => ({
